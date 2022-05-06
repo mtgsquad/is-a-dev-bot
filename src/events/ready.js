@@ -10,6 +10,9 @@ module.exports = {
    * @param {discord.Client} client 
    */
   async execute(client) {
+    const botNews = client.channels.cache.find(ch => ch.name === 'bot-news');
+    botNews.send({ embeds: [embed] })
+
     const embed = new MessageEmbed()
 		.setTitle("Bot Started")
 		.setDescription(`${client.user.tag} is now online!`)
@@ -17,13 +20,7 @@ module.exports = {
 		.setTimestamp()
 		.setFooter(e.footer);
 
-	return interaction.reply({ embeds: [embed] });
-
-
-
     console.log("Logged in.");
     client.user.setActivity('with Your Mom')
-    const botNews = client.channels.cache.find(ch => ch.name === 'bot-news');
-    botNews.send({ embeds: [embed] })
   },
 };
