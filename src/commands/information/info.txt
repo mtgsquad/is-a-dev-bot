@@ -1,0 +1,28 @@
+const { SlashCommandBuilder } = require("@discordjs/builders");
+const octokit = require('@octokit/request');
+const request = require('request');
+const fetch = require('node-fetch');
+const { get } = require("request");
+
+module.exports = {
+  data: new SlashCommandBuilder()
+    .setName("info")
+    .setDescription("Information about a domain name.")
+    .addStringOption(option =>
+		option.setName('domain')
+			.setDescription('The domain you want to get information on.')
+			.setRequired(true)),
+  async execute(interaction) {
+        const domain = interaction.options.getString("domain");
+
+        fetch(`https://api.github.com/repos/is-a-dev/register/contents/domains/${domain}.json`, {
+            method: 'GET',
+            headers: {
+                'User-Agent': 'mtgsquad',
+                'Authorization': `token ${process.env.GH}`
+            }
+        }).then(async(res) => {
+            console.log(res)
+        })
+  },
+};

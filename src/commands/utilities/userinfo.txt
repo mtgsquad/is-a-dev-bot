@@ -1,0 +1,37 @@
+const { SlashCommandBuilder } = require("@discordjs/builders");
+const Discord = require('discord.js');
+
+module.exports = {
+  data: new SlashCommandBuilder()
+    .setName("userinfo")
+    .setDescription("Get information on a user.")
+    .addUserOption(option =>
+		option.setName('user')
+			.setDescription("The user who's info you'd like")),
+  async execute(interaction, client) {
+    let user = interaction.options.getUser("user");
+    if(user === null) {
+        user = interaction.user
+    }
+
+	const member = interaction.guild.members.cache.find(member => member.id === user);
+	console.log(member);
+
+/*
+    let authorInfoEmbed = new Discord.MessageEmbed()
+			.setColor('#37393e')
+			.setAuthor(
+				user.tag,
+				interaction.member.user.displayAvatarURL({ dynamic: true })
+			)
+			.setTitle(user.username)
+			.addFields(
+				{ name: 'User ID:', value: `${user.id}` },
+				{ name: 'Account Created At:', value: `${user.createdAt}` },
+				{ name: 'Full Username & Tag:', value: `${user.tag}` },
+                { name: 'Joined at', value: `${member.joinedAt}` },
+			)
+			.setThumbnail(user.displayAvatarURL({ dynamic: true }));
+		await interaction.reply({ embeds: [authorInfoEmbed] });*/
+	},
+};
