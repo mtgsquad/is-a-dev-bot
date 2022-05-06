@@ -1,7 +1,7 @@
 const discord = require('discord.js');
 
 const { MessageEmbed } = require('discord.js');
-const e = require('./embeds.json');
+const e = require('../utils/embeds.json');
 module.exports = {
   name: "ready",
   once: true,
