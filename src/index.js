@@ -32,6 +32,7 @@ const eventFiles = fs
   client.handleEvents(eventFiles, './src/events');
   client.handleCommands(commandFolders, './src/commands');
   client.login(process.env.TOKEN);
+  client.dbConnect();
 })();
 
 const app = express();
@@ -40,7 +41,7 @@ app.get('/data', (req, res) => res.json({
     users: client.users.cache.size,
     commands: client.commands.size,
     serverId: '830872854677422150',
-    botId: client.user.id
+    botId: '846423539619332126'
 }));
 
 
