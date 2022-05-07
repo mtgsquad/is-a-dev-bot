@@ -3,6 +3,7 @@ const Intents = DiscordJS.Intents;
 const dotenv = require("dotenv");
 dotenv.config();
 const fs = require("fs");
+const express = require('express');
 
 const client = new DiscordJS.Client({
   intents: [
@@ -32,3 +33,15 @@ const eventFiles = fs
   client.handleCommands(commandFolders, './src/commands');
   client.login(process.env.TOKEN);
 })();
+
+const app = express();
+app.get('/data', (req, res) => res.json({
+    channels: client.channels.cache.size,
+    users: client.users.cache.size,
+    commands: client.commands.size,
+    serverId: '830872854677422150',
+    botId: client.user.id
+}));
+
+
+app.listen(80, () => console.log('API listening on 80'));
