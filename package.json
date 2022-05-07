@@ -17,6 +17,7 @@
     "discord-buttons": "^4.0.0-deprecated",
     "discord.js": "^13.6.0",
     "dotenv": "^16.0.0",
+    "express": "^4.18.1",
     "request": "^2.88.2"
   }
 }
