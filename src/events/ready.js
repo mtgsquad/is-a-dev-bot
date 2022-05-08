@@ -8,6 +8,6 @@ module.exports = {
    */
   async execute(client) {
     console.log("Logged in.");
-    client.user.setActivity('with Your Mom')
+    client.user.setActivity(process.env.ACTIVITY)
   },
 };
