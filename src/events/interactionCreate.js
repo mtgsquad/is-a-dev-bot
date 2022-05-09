@@ -33,7 +33,11 @@ module.exports = {
       }).then(async()=>await interaction.reply({ephemeral: true, content: 'Thread Created!'}));
 
     } else if(interaction.customId.includes('archiveThread')) {
-        if(interaction.channel.isThread) {
+        if(!interaction.member.roles.cache.get('830875873027817484')) {
+          interaction.reply({ephemeral: true, content: 'You do not have the permissions to do this!'})
+        }
+
+        if(interaction.channel.isThread && interaction.member.roles.cache.get('830875873027817484')) {
           interaction.reply({ephemeral: true, content: 'Archiving thread...'})
           .then(async() => await interaction.channel.setArchived());
         }
