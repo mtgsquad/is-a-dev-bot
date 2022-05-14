@@ -34,7 +34,7 @@ module.exports = {
 
     } else if(interaction.customId.includes('archiveThread')) {
         if(!interaction.member.roles.cache.get('830875873027817484')) {
-          interaction.reply({ephemeral: true, content: 'You do not have the permissions to do this!'})
+          return interaction.reply({ephemeral: true, content: 'You do not have the permissions to do this!'})
         }
 
         if(interaction.channel.isThread && interaction.member.roles.cache.get('830875873027817484')) {
