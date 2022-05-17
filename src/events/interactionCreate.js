@@ -30,7 +30,6 @@ module.exports = {
        const thread = await interaction.channel.threads.create({
         name: `${interaction.member.user.username}`,
         reason: 'Reason will be provided by User',
-        startMessage: `Please use the /help command to provide maintainers with the issue you are facing and your subdomain, we will try to respond as fast as possible.\n Thread Opened By: ${interaction.member}\n *${interaction.guild.roles.cache.get('830875873027817484')}*)`
       });
 
     } else if(interaction.customId.includes('archiveThread')) {
