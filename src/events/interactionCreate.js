@@ -1,4 +1,4 @@
-const {Interaction, Client} = require('discord.js');
+const {Interaction, Client, Message} = require('discord.js');
 
 module.exports = {
   name: "interactionCreate",
@@ -29,8 +29,9 @@ module.exports = {
     if(interaction.customId.includes('makeThread')) {
        const thread = await interaction.channel.threads.create({
         name: `${interaction.member.user.username}`,
-        reason: 'State your reason!'
-      }).then(async()=>await interaction.reply({ephemeral: true, content: 'Thread Created!'}));
+        reason: 'Reason will be provided by User',
+        startMessage: `Please use the /help command to provide maintainers with the issue you are facing and your subdomain, we will try to respond as fast as possible.\n Thread Opened By: ${interaction.member}\n *${interaction.guild.roles.cache.get('830875873027817484')}*)`
+      });
 
     } else if(interaction.customId.includes('archiveThread')) {
         if(!interaction.member.roles.cache.get('830875873027817484')) {

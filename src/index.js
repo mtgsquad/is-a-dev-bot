@@ -26,12 +26,17 @@ const eventFiles = fs
   .filter((file) => file.endsWith(".js"));
 
 (async () => {
+  const runArgs = process.argv.slice(2);
   for (file of functions) {
     require(`./functions/${file}`)(client);
   }
   client.handleEvents(eventFiles, './src/events');
   client.handleCommands(commandFolders, './src/commands');
-  client.login(process.env.TOKEN);
+  if(runArgs[0] === '--test') {
+    client.login(process.env.TESTTOKEN);
+  } else {
+    client.login(process.env.TOKEN);
+  }
   client.dbConnect();
 })();
 
