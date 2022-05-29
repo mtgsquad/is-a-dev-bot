@@ -1,3 +1,4 @@
+// redeploy
 const DiscordJS = require("discord.js");
 const Intents = DiscordJS.Intents;
 const dotenv = require("dotenv");
