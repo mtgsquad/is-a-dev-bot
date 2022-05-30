@@ -2,7 +2,7 @@
 The free subdomain registration service!
 
 ### Note: this is just the bot repository
-register subdomains here: is-a.dev/register
+register subdomains here: [is-a-dev/register](https://github.com/is-a-dev/register)
 
 # Environment Variables
 - `TOKEN`: Bot Token
